@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="container signup-section">
+    <div class="section-content">
+      <h2>Login</h2>
+
+      <form method="POST" action="/home">
+        
+        <div class="form-group">
+              <p class="error-message"></p>
+        </div> 
+
+        <div class="form-group">
+            <label for="id">identifiant</label>
+            <input type="text" id="identifiant" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <label for="id">password</label>
+            <input type="password" id="svngoku" placeholder="🚷🚷🚷🚷">
+        </div>
+
+         <button class="btn-primary" type="submit">login</button> 
+      </form>
+    </div>
+  </main>
+{% endblock %}

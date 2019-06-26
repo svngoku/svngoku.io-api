@@ -7,7 +7,7 @@ class Languages:
         self.resume = resume
         self.className = className
         # 
-        self.data = []
+        self.data = {}
     
     def getLanguage(self):
         return str("title:" +  self.title) 

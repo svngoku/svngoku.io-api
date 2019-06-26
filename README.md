@@ -11,5 +11,3 @@
 * python3
 
 * flask framework
-
-* uikit
