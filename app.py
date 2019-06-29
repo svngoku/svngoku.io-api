@@ -2,7 +2,6 @@ from flask import Flask, flash, redirect, jsonify, request, url_for, abort
 from flask import render_template
 from flask import make_response
 
-
 # implementation de l'application
 app = Flask(__name__)
 
@@ -25,7 +24,7 @@ langs = [
 # error format
 @app.errorhandler(404)
 def not_find(error):
-    return make_response(jsonify({'error': 'Element pas trouvé ✖' }), 404)
+    return make_response(jsonify({'error': 'Element pas trouvé ✖'}), 404)
 
 # Application routes
 @app.route("/")
@@ -40,13 +39,8 @@ def index():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    message = ''
-    if request.method == 'GET':
-        return render_template('login.html')
-    else:
-       # method it's probably post and login me
-       message = 'we gonna log you'
-       return message
+    return render_template('login.html')
+
 
 # API ROUTES
 
@@ -66,4 +60,4 @@ def language(language_id):
 
 # Run App
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
