@@ -29,17 +29,17 @@ def not_find(error):
 # Application routes
 @app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template('home.jinja')
 
 
 @app.route("/home")
 def index():
-    return render_template('index.html')
+    return render_template('index.jinja')
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    return render_template('login.jinja')
 
 
 # API ROUTES
