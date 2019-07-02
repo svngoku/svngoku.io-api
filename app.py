@@ -41,9 +41,15 @@ def index():
 def login():
     return render_template('login.jinja')
 
+@app.route('/logout')
+def logout():
+    return redirect('/')
+
+
+
+
 
 # API ROUTES
-
 @app.route("/api/languages")
 def languages():
     return jsonify({'languages': langs})
