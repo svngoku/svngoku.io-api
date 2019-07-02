@@ -4,7 +4,7 @@ def createUser():
     psw = MD5.new()
     name = input('Enter your name: ')
     password = input('Enter your password: ')
-    psw.update(b''+password+'')
+    psw.update(b"{password}")
     if len(name) > 0 and len(password) > 0:
         user = { 'name' : name , 'password' : str(psw.hexdigest()) }
         print(" user created 👍")
@@ -12,7 +12,7 @@ def createUser():
     else:
         AssertionError
 
-createUser();
+createUser()
 
 # def getUser(name, password):    
 #     createUser(name, str(password))
