@@ -7,8 +7,13 @@ connexion = pymysql.connect(host='127.0.0.1',port=3306, user='root',passwd='root
 crs = connexion.cursor()
 
 print("**** connexion au SGBD *****")
-print("**** liste des différentes base de données")
 
-crs.execute("SHOW DATABASES")
-for unReg in crs:
-    print(unReg, end=", ")
+print("**** use database for API ****")
+# use database query
+crs.execute("USE svngokuApi")
+
+print("query executed")
+
+# crs.execute("SHOW DATABASES")
+# for unReg in crs:
+#     print(unReg, end=", ")
