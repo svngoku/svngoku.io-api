@@ -1,6 +1,7 @@
 from flask import Flask, flash, redirect, jsonify, request, url_for, abort
 from flask import render_template
 from flask import make_response
+from api.github import getRepoByName
 
 # implementation de l'application
 app = Flask(__name__)
@@ -28,14 +29,12 @@ def not_find(error):
 
 # Application routes
 @app.route("/")
-def home():
+def main():
     return render_template('home.jinja')
-
 
 @app.route("/home")
 def index():
     return render_template('index.jinja')
-
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -47,13 +46,14 @@ def logout():
 
 
 
-
-
 # API ROUTES
 @app.route("/api/languages")
 def languages():
     return jsonify({'languages': langs})
 
+@app.route("/api/repos")
+def repo():
+    return jsonify({'repostories': getRepoByName()})
 
 @app.route('/api/language/<int:language_id>')
 def language(language_id):
@@ -66,4 +66,4 @@ def language(language_id):
 
 # Run App
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

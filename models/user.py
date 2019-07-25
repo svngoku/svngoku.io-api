@@ -1,6 +1,6 @@
 from  Crypto.Hash import MD5
 
-async def createUser():
+def createUser():
     psw = MD5.new()
     name = input('Enter your name: ')
     password = input('Enter your password: ')

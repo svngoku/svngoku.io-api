@@ -1,6 +1,6 @@
 *.py[co]
 *.DS_*
-
+.pytest_cache
 # Packages
 
 *.egg
