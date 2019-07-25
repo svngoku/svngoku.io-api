@@ -14,6 +14,14 @@ crs.execute("USE svngokuApi;")
 
 print("query executed")
 
-crs.execute("SHOW tables;")
-for unReg in crs:
-    print(unReg, end=", ")
+def showTables():
+    crs.execute("SHOW tables;")
+    for unReg in crs:
+        print(unReg)
+
+def showArticles():
+    crs.execute("SELECT * FROM article;")
+    for article in crs.fetchall():
+        return article
+
+# end
