@@ -1,7 +1,9 @@
-from flask import Flask, flash, redirect, jsonify, request, url_for, abort
+from flask import Flask, flash, redirect, session ,jsonify, request, url_for, abort
 from flask import render_template
 from flask import make_response
 from api.github import getRepoByName
+from models.validation import is_logged_in
+# import config
 
 # implementation de l'application
 app = Flask(__name__)
@@ -38,11 +40,21 @@ def index():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template('login.jinja')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        print({'username' : username, "password" : password})
+        return url_for('home')
+    else:
+        return render_template('login.jinja')
 
-@app.route('/logout')
-def logout():
-    return redirect('/')
+# @app.route('/logout')
+# @is_logged_in
+# def logout():
+#     session.clear()
+#     flash('Vous etes a présent déconnecter', 'success')
+#     return redirect(url_for('login'))
+
 
 
 
