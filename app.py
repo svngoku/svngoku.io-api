@@ -1,7 +1,7 @@
 from flask import Flask, flash, redirect, session ,jsonify, request, url_for, abort
 from flask import render_template
 from flask import make_response
-from api.github import getRepoByName
+# from api.github import getRepoByName
 from models.validation import is_logged_in
 # import config
 
@@ -24,6 +24,7 @@ langs = [
 ]
 
 
+
 # error format
 @app.errorhandler(404)
 def not_find(error):
@@ -34,17 +35,23 @@ def not_find(error):
 def main():
     return render_template('home.jinja')
 
-@app.route("/home")
+@app.route("/dashboard")
 def index():
-    return render_template('index.jinja')
+    return render_template('dashboard.jinja')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    stored_pass = "12345"
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        print({'username' : username, "password" : password})
-        return url_for('home')
+        if(password == stored_pass):
+            session['username'] = username
+            flash(' You are logged successfully ! ', 'success')
+            return redirect(url_for('dashboard'))  
+        else:
+            error = 'Invalid login! please try again ! '
+            return render_template('login.jinja', error=error)
     else:
         return render_template('login.jinja')
 
@@ -65,7 +72,8 @@ def languages():
 
 @app.route("/api/repos")
 def repo():
-    return jsonify({'repostories': getRepoByName()})
+    # return jsonify({'repostories': getRepoByName()})
+    return jsonify({'repo'})
 
 @app.route('/api/language/<int:language_id>')
 def language(language_id):
