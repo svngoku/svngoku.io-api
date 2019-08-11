@@ -23,7 +23,6 @@ def test_urls():
         'http://foo:@2001:db8:85a3::8a2e:370:7334',
         'http://foo2:qd1%r@example.com',
     ]
-
     for value in urls:
         yield inputs.url(value), value
 
