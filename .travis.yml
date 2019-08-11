@@ -3,9 +3,9 @@ python:
   - "3.6" # 3.6 master branch
 #  install dependencies
 install:
-  - pip3 install flask
-  - pip3 install MD5
-  - pip3 install pymysql
+  - pip install flask
+  - pip install MD5
+  - pip install pymysql
 # running test
 script: pytest
   
