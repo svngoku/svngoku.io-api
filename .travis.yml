@@ -4,7 +4,6 @@ python:
 #  install dependencies
 install:
   - pip install flask
-  - pip install MD5
   - pip install pymysql
 # running test
 script: pytest
