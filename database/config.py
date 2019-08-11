@@ -6,16 +6,12 @@ connexion = pymysql.connect(host='127.0.0.1',port=3306, user='root',passwd='root
 # cursor renvoie un objet curseur utilisable pour émettre des requetes MYSQL .
 crs = connexion.cursor()
 
-# use database query
+# use required database
 crs.execute("USE svngokuApi;")
 
 print("query executed")
 
-def showTables():
-    crs.execute("SHOW tables;")
-    for unReg in crs:
-        print(unReg)
-
+# func to show articles 
 def showArticles():
     crs.execute("SELECT * FROM article;")
     for article in crs.fetchall():
